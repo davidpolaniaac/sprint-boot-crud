@@ -3,14 +3,9 @@ package co.com.crudtest.jpa.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.data.annotation.Id;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -19,8 +14,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "product")
 public class ProductEntity {
-    
-    @Id private String id;
-    @Column private String name;
-    @Column private String price;
+
+  @Id private String id;
+  @Column private String name;
+  @Column private long price;
 }

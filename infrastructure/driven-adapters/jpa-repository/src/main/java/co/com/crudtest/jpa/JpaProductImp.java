@@ -28,18 +28,20 @@ public class JpaProductImp implements ProductRepository {
     }
 
     @Override
-    public void update(String id, Product product) {
+    public void update(String id, Product product) throws Exception {
         Product productDb = jpaRepositoryAdapter.findById(id);
 
-        if (productDb != null) {
-            product.setId(id);
-            jpaRepositoryAdapter.save(product);
-        }
+        if (productDb == null) throw new Exception("Product Not Found : " + id);
+    
+        productDb.setName(product.getName());
+        productDb.setPrice(product.getPrice());
+    
+        jpaRepositoryAdapter.save(productDb);
     }
 
     @Override
     public void delete(String id) {
-        jpaRepositoryAdapter.findById(id);
+        jpaRepositoryAdapter.deleteById(id);
     }
 
     @Override
